@@ -1,0 +1,137 @@
+.card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.locationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.city {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.country {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.weatherDetails {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.tempContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp {
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: flex-start;
+}
+
+.degree {
+  font-size: 2.5rem;
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.conditionText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.footerStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.statValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  .cardIcon {
+    width: 42px !important;
+    height: 42px !important;
+    margin-top: 12px;
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 24px;
+    min-height: auto;
+  }
+  .temp {
+    font-size: 4.5rem;
+  }
+  .city {
+    font-size: 1.6rem;
+  }
+  .cardIcon {
+    width: 36px !important;
+    height: 36px !important;
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+}
