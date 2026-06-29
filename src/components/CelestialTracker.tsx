@@ -204,40 +204,30 @@ export default function CelestialTracker({
   }
 
   // Calculate Moon Position on the visual Arc
-  // We'll map the Moon's altitude directly for vertical, and scale the horizontal using azimuth
-  // For visual consistency, let's keep the moon on a smooth path as well
+  // We'll map the Moon's azimuth to progress along the visual arc, and place it exactly on the ellipse
   let moonX = 150;
   let moonY = 100;
   
+  let moonProgress = 0.5;
+  if (moonAzDeg >= 90 && moonAzDeg <= 270) {
+    moonProgress = (moonAzDeg - 90) / 180;
+  } else if (moonAzDeg > 270) {
+    moonProgress = 1 - (moonAzDeg - 270) / 180;
+  } else {
+    moonProgress = (moonAzDeg + 90) / 180;
+  }
+  moonProgress = Math.max(0, Math.min(1, moonProgress));
+
   if (moonAltDeg > 0) {
     // Above horizon (altitude > 0)
-    // Map altitude (0 to 90) to height (100 to 15)
-    const altRatio = Math.min(90, moonAltDeg) / 90;
-    // Map azimuth (0 to 360) to X (20 to 280)
-    // We want the moon to move from left (east, approx 90) to right (west, approx 270)
-    let azRatio = 0.5;
-    if (moonAzDeg >= 90 && moonAzDeg <= 270) {
-      azRatio = (moonAzDeg - 90) / 180;
-    } else if (moonAzDeg > 270) {
-      azRatio = 1 - (moonAzDeg - 270) / 180;
-    } else {
-      azRatio = (moonAzDeg + 90) / 180;
-    }
-    
-    moonX = 20 + 260 * azRatio;
-    moonY = 100 - 85 * altRatio;
+    // Map along the upper visual arc path (ry = 85)
+    moonX = 150 - 130 * Math.cos(Math.PI * moonProgress);
+    moonY = 100 - 85 * Math.sin(Math.PI * moonProgress);
   } else {
     // Below horizon
-    const altRatio = Math.min(90, Math.abs(moonAltDeg)) / 90;
-    let azRatio = 0.5;
-    if (moonAzDeg >= 90 && moonAzDeg <= 270) {
-      azRatio = (moonAzDeg - 90) / 180;
-    } else {
-      azRatio = (moonAzDeg > 270) ? (moonAzDeg - 270) / 180 : (moonAzDeg + 90) / 180;
-    }
-    
-    moonX = 20 + 260 * azRatio;
-    moonY = 100 + 15 * altRatio;
+    // Map along the lower visual arc path (ry = 15)
+    moonX = 150 + 130 * Math.cos(Math.PI * moonProgress);
+    moonY = 100 + 15 * Math.sin(Math.PI * moonProgress);
   }
 
   // Custom Moon Phase SVG Path Generator
