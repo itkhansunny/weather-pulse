@@ -1,8 +1,8 @@
 .container {
-  padding: 24px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
@@ -31,12 +31,12 @@
   align-items: center;
   justify-content: space-between;
   min-width: 80px;
-  padding: 16px 12px;
+  padding: 12px 8px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  gap: 12px;
+  gap: 8px;
 }
 
 .hourItem:hover {

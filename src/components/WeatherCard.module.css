@@ -1,5 +1,5 @@
 .card {
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -45,8 +45,8 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-top: 32px;
-  margin-bottom: 24px;
+  margin-top: 20px;
+  margin-bottom: 16px;
 }
 
 .tempContainer {
@@ -55,7 +55,7 @@
 }
 
 .temp {
-  font-size: 5.5rem;
+  font-size: 4.5rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -84,7 +84,7 @@
   display: flex;
   gap: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 20px;
+  padding-top: 12px;
   margin-top: auto;
 }
 

@@ -80,13 +80,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (min-width: 1025px) {
-  html, body {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-}
+
 
 /* Premium Scrollbar */
 ::-webkit-scrollbar {
@@ -263,6 +257,8 @@ html, body {
 /* Styles applied during screenshot generation */
 .is-exporting * {
   scrollbar-width: none !important;
+  animation: none !important;
+  transition: none !important;
 }
 .is-exporting *::-webkit-scrollbar {
   display: none !important;

@@ -9,6 +9,8 @@ import WeatherCard from './WeatherCard';
 import HourlyForecast from './HourlyForecast';
 import TenDayForecast from './TenDayForecast';
 import WeatherDetails from './WeatherDetails';
+import CelestialTracker from './CelestialTracker';
+import WeatherAdvisor from './WeatherAdvisor';
 import { toPng } from 'html-to-image';
 import styles from './WeatherDashboard.module.css';
 
@@ -113,10 +115,27 @@ export default function WeatherDashboard() {
       // Add exporting class to hide scrollbars and controls in screenshot
       dashboardRef.current.classList.add('is-exporting');
 
+      // Query and inline CSS custom properties (variables) so html-to-image can access them in the cloned context
+      const computedStyle = window.getComputedStyle(document.documentElement);
+      const accent = computedStyle.getPropertyValue('--accent');
+      const cardBg = computedStyle.getPropertyValue('--card-bg');
+      const cardBorder = computedStyle.getPropertyValue('--card-border');
+      const textPrimary = computedStyle.getPropertyValue('--text-primary');
+      const textSecondary = computedStyle.getPropertyValue('--text-secondary');
+      const textMuted = computedStyle.getPropertyValue('--text-muted');
+      const accentGlow = computedStyle.getPropertyValue('--accent-glow');
+
+      dashboardRef.current.style.setProperty('--accent', accent);
+      dashboardRef.current.style.setProperty('--card-bg', cardBg);
+      dashboardRef.current.style.setProperty('--card-border', cardBorder);
+      dashboardRef.current.style.setProperty('--text-primary', textPrimary);
+      dashboardRef.current.style.setProperty('--text-secondary', textSecondary);
+      dashboardRef.current.style.setProperty('--text-muted', textMuted);
+      dashboardRef.current.style.setProperty('--accent-glow', accentGlow);
+
       // A tiny delay to allow browser repaint/reflow before taking the screenshot
       await new Promise((resolve) => setTimeout(resolve, 50));
 
-      const computedStyle = window.getComputedStyle(document.body);
       const bgGradient = computedStyle.backgroundImage || 'var(--bg-gradient)';
 
       const dataUrl = await toPng(dashboardRef.current, {
@@ -136,6 +155,13 @@ export default function WeatherDashboard() {
     } finally {
       if (dashboardRef.current) {
         dashboardRef.current.classList.remove('is-exporting');
+        dashboardRef.current.style.removeProperty('--accent');
+        dashboardRef.current.style.removeProperty('--card-bg');
+        dashboardRef.current.style.removeProperty('--card-border');
+        dashboardRef.current.style.removeProperty('--text-primary');
+        dashboardRef.current.style.removeProperty('--text-secondary');
+        dashboardRef.current.style.removeProperty('--text-muted');
+        dashboardRef.current.style.removeProperty('--accent-glow');
       }
       setSaving(false);
     }
@@ -238,12 +264,21 @@ export default function WeatherDashboard() {
                 tempMaxToday={weatherData.daily[0]?.tempMax ?? weatherData.current.temp}
                 lang={lang}
               />
+              <WeatherAdvisor current={weatherData.current} lang={lang} />
             </div>
 
             {/* Right Column - Hourly slider + secondary parameters */}
             <div className={styles.rightColumn}>
               <HourlyForecast hourly={weatherData.hourly} timezone={selectedCity.timezone} lang={lang} />
-              <WeatherDetails current={weatherData.current} lang={lang} />
+              <div className={styles.bottomRow}>
+                <WeatherDetails current={weatherData.current} lang={lang} />
+                <CelestialTracker
+                  latitude={selectedCity.latitude}
+                  longitude={selectedCity.longitude}
+                  timezone={selectedCity.timezone}
+                  lang={lang}
+                />
+              </div>
             </div>
           </div>
 

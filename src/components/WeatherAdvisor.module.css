@@ -1,0 +1,268 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sparkleIcon {
+  color: var(--accent);
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.title {
+  color: var(--text-secondary);
+}
+
+.advisorContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.advisorCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+}
+
+.advisorCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.adviceText {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Light / Dark context theme coloring using relative HSL variables */
+
+/* Cold (Freezing) */
+.coldTheme {
+  background: rgba(147, 197, 253, 0.04);
+  border-color: rgba(147, 197, 253, 0.12);
+}
+.coldTheme .shirtIcon, .coldTheme .cardTitle {
+  color: #60a5fa;
+}
+.coldTheme .adviceText {
+  color: var(--text-primary);
+}
+
+/* Chilly */
+.chillyTheme {
+  background: rgba(45, 212, 191, 0.03);
+  border-color: rgba(45, 212, 191, 0.1);
+}
+.chillyTheme .shirtIcon, .chillyTheme .cardTitle {
+  color: #2dd4bf;
+}
+.chillyTheme .adviceText {
+  color: var(--text-primary);
+}
+
+/* Comfortable (Mild) */
+.comfortableTheme {
+  background: rgba(52, 211, 153, 0.03);
+  border-color: rgba(52, 211, 153, 0.1);
+}
+.comfortableTheme .shirtIcon, .comfortableTheme .cardTitle {
+  color: #34d399;
+}
+.comfortableTheme .adviceText {
+  color: var(--text-primary);
+}
+
+/* Warm */
+.warmTheme {
+  background: rgba(251, 191, 36, 0.03);
+  border-color: rgba(251, 191, 36, 0.1);
+}
+.warmTheme .shirtIcon, .warmTheme .cardTitle {
+  color: #fbbf24;
+}
+.warmTheme .adviceText {
+  color: var(--text-primary);
+}
+
+/* Hot */
+.hotTheme {
+  background: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.12);
+}
+.hotTheme .shirtIcon, .hotTheme .cardTitle {
+  color: #f87171;
+}
+.hotTheme .adviceText {
+  color: var(--text-primary);
+}
+
+/* Rain Alert */
+.rainAlert {
+  background: rgba(99, 102, 241, 0.04);
+  border-color: rgba(99, 102, 241, 0.12);
+}
+.rainAlert .iconRain, .rainAlert .cardTitle {
+  color: #818cf8;
+}
+.rainAlert .adviceText {
+  color: var(--text-primary);
+}
+
+/* UV Alert */
+.uvAlert {
+  background: rgba(245, 158, 11, 0.04);
+  border-color: rgba(245, 158, 11, 0.12);
+}
+.uvAlert .iconSun, .uvAlert .cardTitle {
+  color: #fbbf24;
+}
+.uvAlert .adviceText {
+  color: var(--text-primary);
+}
+
+/* Wind Alert */
+.windAlert {
+  background: rgba(148, 163, 184, 0.03);
+  border-color: rgba(148, 163, 184, 0.1);
+}
+.windAlert .iconWind, .windAlert .cardTitle {
+  color: #94a3b8;
+}
+.windAlert .adviceText {
+  color: var(--text-primary);
+}
+
+/* Humidity Alert */
+.humidityAlert {
+  background: rgba(38, 166, 154, 0.03);
+  border-color: rgba(38, 166, 154, 0.1);
+}
+.humidityAlert .iconHumidity, .humidityAlert .cardTitle {
+  color: #26a69a;
+}
+.humidityAlert .adviceText {
+  color: var(--text-primary);
+}
+
+/* Clear Alert */
+.clearAlert {
+  background: rgba(167, 139, 250, 0.03);
+  border-color: rgba(167, 139, 250, 0.1);
+}
+.clearAlert .iconClear, .clearAlert .cardTitle {
+  color: #a78bfa;
+}
+.clearAlert .adviceText {
+  color: var(--text-primary);
+}
+
+/* Light Theme tweaks */
+:global([data-app-theme="light"]) .advisorCard {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+:global([data-app-theme="light"]) .coldTheme {
+  background: rgba(37, 99, 235, 0.03);
+  border-color: rgba(37, 99, 235, 0.08);
+}
+:global([data-app-theme="light"]) .coldTheme .shirtIcon,
+:global([data-app-theme="light"]) .coldTheme .cardTitle {
+  color: #2563eb;
+}
+
+:global([data-app-theme="light"]) .chillyTheme {
+  background: rgba(13, 148, 136, 0.03);
+  border-color: rgba(13, 148, 136, 0.08);
+}
+:global([data-app-theme="light"]) .chillyTheme .shirtIcon,
+:global([data-app-theme="light"]) .chillyTheme .cardTitle {
+  color: #0d9488;
+}
+
+:global([data-app-theme="light"]) .comfortableTheme {
+  background: rgba(5, 150, 105, 0.03);
+  border-color: rgba(5, 150, 105, 0.08);
+}
+:global([data-app-theme="light"]) .comfortableTheme .shirtIcon,
+:global([data-app-theme="light"]) .comfortableTheme .cardTitle {
+  color: #059669;
+}
+
+:global([data-app-theme="light"]) .warmTheme {
+  background: rgba(217, 119, 6, 0.03);
+  border-color: rgba(217, 119, 6, 0.08);
+}
+:global([data-app-theme="light"]) .warmTheme .shirtIcon,
+:global([data-app-theme="light"]) .warmTheme .cardTitle {
+  color: #d97706;
+}
+
+:global([data-app-theme="light"]) .hotTheme {
+  background: rgba(220, 38, 38, 0.03);
+  border-color: rgba(220, 38, 38, 0.08);
+}
+:global([data-app-theme="light"]) .hotTheme .shirtIcon,
+:global([data-app-theme="light"]) .hotTheme .cardTitle {
+  color: #dc2626;
+}
+
+:global([data-app-theme="light"]) .rainAlert {
+  background: rgba(79, 70, 229, 0.03);
+  border-color: rgba(79, 70, 229, 0.08);
+}
+:global([data-app-theme="light"]) .rainAlert .iconRain,
+:global([data-app-theme="light"]) .rainAlert .cardTitle {
+  color: #4f46e5;
+}
+
+:global([data-app-theme="light"]) .uvAlert {
+  background: rgba(217, 119, 6, 0.03);
+  border-color: rgba(217, 119, 6, 0.08);
+}
+:global([data-app-theme="light"]) .uvAlert .iconSun,
+:global([data-app-theme="light"]) .uvAlert .cardTitle {
+  color: #d97706;
+}
+
+:global([data-app-theme="light"]) .clearAlert {
+  background: rgba(124, 58, 237, 0.03);
+  border-color: rgba(124, 58, 237, 0.08);
+}
+:global([data-app-theme="light"]) .clearAlert .iconClear,
+:global([data-app-theme="light"]) .clearAlert .cardTitle {
+  color: #7c3aed;
+}

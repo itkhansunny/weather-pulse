@@ -1,0 +1,240 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  min-height: 240px;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  padding: 3px;
+  border-radius: 9999px;
+  gap: 2px;
+}
+
+[data-app-theme="light"] .tabs {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tabBtn:hover {
+  color: var(--text-primary);
+}
+
+.activeTab {
+  background: var(--accent);
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* Sky Visualizer styles */
+.skyVisualizer {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+  background: radial-gradient(circle at bottom, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.skyDay {
+  background: radial-gradient(circle at bottom, rgba(245, 158, 11, 0.1) 0%, rgba(56, 189, 248, 0.03) 50%, transparent 80%);
+}
+
+.skyNight {
+  background: radial-gradient(circle at bottom, rgba(99, 102, 241, 0.06) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+}
+
+/* Starfield background for night */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 60px 70px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 120px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 200px 80px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 260px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 290px 90px, rgba(255,255,255,0.5), rgba(0,0,0,0));
+  background-size: 100% 100%;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.arcSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sunGlow {
+  filter: drop-shadow(0 0 10px var(--accent)) drop-shadow(0 0 4px #ffffff);
+  animation: rotate-slow 20s linear infinite;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sunGlow:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+.moonGlow {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.moonGlow:hover {
+  transform: scale(1.15);
+}
+
+.cardinalText {
+  font-size: 8px;
+  font-weight: 800;
+  fill: var(--text-muted);
+  opacity: 0.7;
+}
+
+.horizonLabel {
+  font-size: 7px;
+  font-weight: 700;
+  fill: var(--text-secondary);
+}
+
+/* Stats section styling */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px 12px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.statCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-app-theme="light"] .statCard {
+  background: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+[data-app-theme="light"] .statCard:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.statIcon {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.statValue {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 1px;
+}
+
+.statDesc {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  grid-column: span 2;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Animations */
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .statDesc {
+    grid-column: span 1;
+  }
+}
